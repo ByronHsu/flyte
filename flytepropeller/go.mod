@@ -145,7 +145,6 @@ require (
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
-<<<<<<< HEAD
 replace (
 	github.com/aws/amazon-sagemaker-operator-for-k8s => github.com/aws/amazon-sagemaker-operator-for-k8s v1.0.1-0.20210303003444-0fb33b1fd49d
 	github.com/flyteorg/flyte/datacatalog => ../datacatalog
@@ -155,6 +154,3 @@ replace (
 	github.com/flyteorg/flyte/flytestdlib => ../flytestdlib
 	github.com/flyteorg/flyteidl => ../flyteidl
 )
-=======
-replace github.com/aws/amazon-sagemaker-operator-for-k8s => github.com/aws/amazon-sagemaker-operator-for-k8s v1.0.1-0.20210303003444-0fb33b1fd49d
->>>>>>> flytepropeller/byhsu/promise-attr-path

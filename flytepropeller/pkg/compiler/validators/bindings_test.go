@@ -3,12 +3,8 @@ package validators
 import (
 	"testing"
 
-<<<<<<< HEAD
 	c "github.com/flyteorg/flyte/flytepropeller/pkg/compiler/common"
-=======
-	c "github.com/flyteorg/flytepropeller/pkg/compiler/common"
 	structpb "github.com/golang/protobuf/ptypes/struct"
->>>>>>> flytepropeller/byhsu/promise-attr-path
 
 	"github.com/flyteorg/flyte/flytepropeller/pkg/compiler/common/mocks"
 	compilerErrors "github.com/flyteorg/flyte/flytepropeller/pkg/compiler/errors"
@@ -399,6 +395,10 @@ func TestValidateBindings(t *testing.T) {
 		n2 := &mocks.NodeBuilder{}
 		n2.OnGetId().Return("node2")
 		n2.OnGetOutputAliases().Return(nil)
+		literalType := LiteralTypeForLiteral(coreutils.MustMakeLiteral(&structpb.Struct{}))
+		literalType.Structure = &core.TypeStructure{}
+		literalType.Structure.DataclassType = map[string]*core.LiteralType{"x": LiteralTypeForLiteral(coreutils.MustMakeLiteral(1))}
+
 		n2.OnGetInterface().Return(&core.TypedInterface{
 			Inputs: &core.VariableMap{
 				Variables: map[string]*core.Variable{},
@@ -406,7 +406,7 @@ func TestValidateBindings(t *testing.T) {
 			Outputs: &core.VariableMap{
 				Variables: map[string]*core.Variable{
 					"n2_out": {
-						Type: LiteralTypeForLiteral(coreutils.MustMakeLiteral(&structpb.Struct{})),
+						Type: literalType,
 					},
 				},
 			},
